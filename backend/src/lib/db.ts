@@ -6,6 +6,7 @@ import { Income } from "../models/Income.model.ts";
 import { Expense } from "../models/Expense.model.ts";
 import { Budget } from "../models/Budget.model.ts";
 import { Analytics } from "../models/Analytics.model.ts";
+
 dotenv.config()
 export const database = new DataSource({
     type: "postgres",
@@ -16,7 +17,7 @@ export const database = new DataSource({
     database: `${process.env.DB_DATABASE}`,
     synchronize: true,
     logging: true,
-    entities: [User, SavingGoal, Income, Expense, Budget, Analytics],
+    entities: ["src/models/*.model.ts"],
     subscribers: [],
     migrations: []
 })
