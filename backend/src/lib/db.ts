@@ -10,11 +10,11 @@ import { Analytics } from "../models/Analytics.model.ts";
 dotenv.config()
 export const database = new DataSource({
     type: "postgres",
-    host: `${process.env.DB_HOSTNAME}`,
-    port: 5433,
-    username: `${process.env.DB_USERNAME}`,
-    password: `${process.env.DB_PASSWORD}`,
-    database: `${process.env.DB_DATABASE}`,
+    host: process.env.DB_HOSTNAME,
+    port: process.env.DB_PORT as unknown as number,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
     synchronize: true,
     logging: true,
     entities: ["src/models/*.model.ts"],
