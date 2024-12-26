@@ -1,6 +1,7 @@
-import { Column, Decimal128, ManyToMany, ManyToOne, PrimaryGeneratedColumn, Timestamp } from "typeorm";
-import { User } from "./User.model";
+import { Column, Decimal128, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn, Timestamp } from "typeorm";
+import { User } from "./User.model.ts";
 
+@Entity()
 export class SavingGoal {
     @PrimaryGeneratedColumn("uuid")
     id: string

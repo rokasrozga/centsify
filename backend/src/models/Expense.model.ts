@@ -1,5 +1,5 @@
 import { Column, Decimal128, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn, Timestamp } from "typeorm";
-import { User } from "./User.model";
+import { User } from "./User.model.ts";
 
 @Entity()
 export class Expense {

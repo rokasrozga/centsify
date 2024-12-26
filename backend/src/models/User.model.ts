@@ -1,8 +1,8 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Expense } from "./Expense.model";
-import { Income } from "./Income.model";
-import { Budget } from "./Budget.model";
-import { SavingGoal } from "./SavingGoal.model";
+import { Expense } from "./Expense.model.ts";
+import { Income } from "./Income.model.ts";
+import { Budget } from "./Budget.model.ts";
+import { SavingGoal } from "./SavingGoal.model.ts";
 
 @Entity()
 export class User {
