@@ -16,8 +16,8 @@ export class Budget {
     @Column({type: "money"})
     limitTotal: Decimal128
 
-    @Column()
-    period: Timestamp
+    @Column({type: "timestamp"})
+    period: Date
 
     @ManyToOne(() => User, (user) => user.budget)
     user: User

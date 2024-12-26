@@ -1,19 +1,19 @@
-import { Column, Decimal128, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Decimal128, Entity, NumericType, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Analytics {
     @PrimaryGeneratedColumn("uuid")
     id: string
 
-    @Column({type: "money"})
-    monthlyIncomeTotal: Decimal128
+    @Column({type: "numeric"})
+    monthlyIncomeTotal: number
 
-    @Column({type: "money"})
-    monthlyExpenseTotal: Decimal128
+    @Column({type: "numeric"})
+    monthlyExpenseTotal: number
     
-    @Column()
-    precentageSpent: Decimal128
+    @Column({type: "numeric"})
+    precentageSpent: number
 
     @Column()
-    spendingTrends: string
+    spendingTrends: number
 }

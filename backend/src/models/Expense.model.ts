@@ -9,8 +9,8 @@ export class Expense {
     @Column({type: "money"})
     amount: Decimal128
 
-    @Column()
-    date: Timestamp
+    @Column({type: "timestamp"})
+    date: Date
 
     @Column()
     category: string

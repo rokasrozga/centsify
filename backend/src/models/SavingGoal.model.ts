@@ -11,8 +11,8 @@ export class SavingGoal {
     @Column({type: "money"})
     currentSavings: Decimal128
 
-    @Column()
-    targetDate: Timestamp
+    @Column({type: "timestamp"})
+    targetDate: Date
 
     @ManyToOne(() => User, (user) => user.savingGoal)
     user: User
