@@ -10,7 +10,7 @@ export class User {
     id: string
 
     @Column({nullable: false})
-    name: string
+    fullName: string
 
     @Column({unique: true, nullable: false})
     email: string
@@ -18,7 +18,7 @@ export class User {
     @Column({nullable: false})
     passwordHash: string
 
-    @Column()
+    @Column({nullable: true})
     googleOauthId: string
 
     @OneToMany(() => Expense, (expense) => expense.user)
@@ -32,4 +32,16 @@ export class User {
 
     @OneToMany(() => SavingGoal, (savingGoal) => savingGoal.user)
     savingGoal: SavingGoal[]
+
+    constructor(
+        fullName: string,
+        email: string,
+        passwordHash: string,
+        googleOauthId?: string
+    ) {
+        this.fullName = fullName
+        this.email = email
+        this.passwordHash = passwordHash
+        if (googleOauthId) this.googleOauthId = googleOauthId
+    }
 }
