@@ -1,5 +1,6 @@
 import { Router } from "express";
-import {login, loginUsingGoogle, logout, register} from "../controllers/auth.controller.ts"
+import {login, loginUsingGoogle, logout, register, addGoogleUser} from "../controllers/auth.controller.ts"
+import { protect } from "../middleware/auth.middleware.ts"
 const authRoute = Router()
 
 // api/auth/register
@@ -14,6 +15,7 @@ authRoute.post("/googlelogin", loginUsingGoogle)
 // api/auth/logout
 authRoute.post("/logout", logout)
 
-// api/auth/check
+authRoute.put("/addgoogleuser", protect ,addGoogleUser)
+
 
 export default authRoute
