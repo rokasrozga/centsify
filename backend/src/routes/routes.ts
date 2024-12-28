@@ -1,5 +1,6 @@
-import { Router } from "express"
-import authRoute from "./auth.route"
+import { Router } from "express";
+import authRoute from "./auth.route.ts";
+
 const router = Router()
 
 router.use("/auth", authRoute)
