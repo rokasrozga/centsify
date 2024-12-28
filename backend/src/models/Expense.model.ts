@@ -1,4 +1,4 @@
-import { Column, Decimal128, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn, Timestamp } from "typeorm";
+import { Column, Decimal128, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./User.model.ts";
 
 @Entity()

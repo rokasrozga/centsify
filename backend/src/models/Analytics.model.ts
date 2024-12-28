@@ -1,4 +1,4 @@
-import { Column, Decimal128, Entity, NumericType, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Analytics {
