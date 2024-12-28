@@ -11,8 +11,8 @@ export const register = async (req: Request, res: Response): Promise<void> => {
             res.status(400).json({message: "Password must be at least 8 characters long"})
             return
         } 
-            const user = await userRepository.findBy({email})
-            if (user[0]){
+            const user = await userRepository.findOneBy({email})
+            if (user){
                 res.status(400).json({message: "User already exists"})
                 return
             }
@@ -39,19 +39,19 @@ export const register = async (req: Request, res: Response): Promise<void> => {
 export const login = async (req: Request, res: Response): Promise<void> => {
     const {email, password} = req.body
     try {
-        const users = await userRepository.findBy({email})
-        if (users.length === 0) {
+        const user = await userRepository.findOneBy({email})
+        if (!user) {
             res.status(400).json({message: "Invalid credentials"})
             return
         }
-        const isPasswordValid = await bcrypt.compare(password, users[0].passwordHash)
+        const isPasswordValid = await bcrypt.compare(password, user.passwordHash)
 
         if (!isPasswordValid) {
             res.status(400).json({message: "Invalid credentials"})
             return
         }
 
-        generateToken(users[0].id, res)
+        generateToken(user.id, res)
         res.status(200).json({message: "Login successful"})
     } catch (error: any) {
         console.log("Error in login:", error.message)
@@ -61,7 +61,12 @@ export const login = async (req: Request, res: Response): Promise<void> => {
 
 // For first time login using Google, for existing users, see ./profile.controller.ts
 export const loginUsingGoogle = async (req: Request, res: Response): Promise<void> => {
-    
+    try {
+        
+    } catch (error: any) {
+        console.log("Error in loginUsingGoogle:", error.message)
+        res.status(500).json({message: "Internal server error"})
+    }
 }
 
 export const logout = async (req: Request, res: Response): Promise<void> => {
